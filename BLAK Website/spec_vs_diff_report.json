@@ -1,0 +1,89 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-14T06:32:33.339Z",
+  "summary": "Diff adds a Motoko backend actor with product/order-related types and product CRUD, plus a new frontend app with routes/pages (Home/Shop/Cart/Checkout/Contact/Admin/Order confirmation), layout (sticky nav + footer), shop controls/product cards, checkout form components, and some SEO/meta and animation helpers. Several requirements cannot be fully verified due to truncation/omitted files, but some requested fields/capabilities appear missing based on visible code.",
+  "missing_requirements": [
+    {
+      "id": "REQ-8",
+      "requirement": "Order placement flow must store selected shipping method and checkout form details (shipping + billing) in backend order record (excluding sensitive payment data).",
+      "reason": "Visible backend types show `Order` containing only `items`, `total`, and a `checkoutForm` with basic fields (name/address/city/postalCode/country/email). There is no billing information structure and no field for selected shipping method in the shown types. Frontend cart/order summary uses a fixed shipping cost (15.0) with no shipping method selection shown.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/components/blak/OrderSummary.tsx",
+        "frontend/src/pages/CartPage.tsx"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "Checkout page must include both Shipping Information form and Billing Information form, plus payment method selection and validation.",
+      "reason": "The visible `CheckoutForm` component explicitly includes a Shipping Information section and Payment Method selection, but no Billing Information section is shown in the provided portion of the file. Because the file is truncated, billing may exist later, but there is no evidence of it in the diff excerpt.",
+      "evidence": [
+        "frontend/src/components/blak/CheckoutForm.tsx"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Admin UI can deactivate/delete products (i.e., support deactivation as an alternative to deletion).",
+      "reason": "Backend and frontend show delete functionality (`deleteProduct`) and update functionality, but no visible product field/state to represent deactivation (e.g., `active`/`isActive`) and no separate deactivate/reactivate operations are shown.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useProducts.ts",
+        "frontend/src/pages/AdminProductsPage.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend user profile storage and APIs (get/save user profiles) with access-control checks.",
+      "reason": "BuildRequest does not ask for customer accounts or profiles (explicitly listed as a non-goal). The diff adds `UserProfile` types and endpoints such as `getCallerUserProfile`, `getUserProfile`, and `saveCallerUserProfile`.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Secret-token-based access control initialization via URL parameter (`caffeineAdminToken`).",
+      "reason": "BuildRequest requires a single Motoko actor and mentions only Internet Identity (and no other auth providers), but does not request a secret token mechanism for initializing admin access control. The diff adds `_initializeAccessControlWithSecret(adminToken)` sourced from a URL parameter.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/blak/AdminGuard.tsx",
+    "frontend/src/components/blak/CheckoutForm.tsx",
+    "frontend/src/components/blak/FadeInOnView.tsx",
+    "frontend/src/components/blak/ImageUploadField.tsx",
+    "frontend/src/components/blak/OrderSummary.tsx",
+    "frontend/src/components/blak/ParallaxSection.tsx",
+    "frontend/src/components/blak/ProductCard.tsx",
+    "frontend/src/components/blak/ShopControls.tsx",
+    "frontend/src/components/blak/SiteLayout.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useCompleteOrder.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/usePageMeta.ts",
+    "frontend/src/hooks/useProducts.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/AdminProductsPage.tsx",
+    "frontend/src/pages/CartPage.tsx",
+    "frontend/src/pages/CheckoutPage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/OrderConfirmationPage.tsx",
+    "frontend/src/pages/ShopPage.tsx",
+    "frontend/src/state/CartProvider.tsx",
+    "frontend/src/state/cartStorage.ts",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

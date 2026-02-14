@@ -1,0 +1,284 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-implement-a-site-wide-blak-visual-system-and-apply-it-consistently-across-all-pages-minimalist-luxury-streetwear-aesthetic-black-white-light-gray-palette-primary-000000-secondary-ffffff-accent-f2f2f2-modern-sans-serif-typography-with-bold-headings-and-clean-body-text-high-contrast-layout-with-editorial-spacing-minimal-but-elegant-hover-and-button-micro-interactions",
+      "featureTitle": "Implement a site-wide BLAK visual system and apply it consistently across all pages: minimalist luxury streetwear aesthetic; black/white/light-gray palette (Primary #000000, Secondary #FFFFFF, Accent #F2F2F2); modern sans-serif typography with bold headings and clean body text; high-contrast layout with editorial spacing; minimal but elegant hover and button micro-interactions.",
+      "files": [
+        "frontend/index.css",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-the-required-routes-and-pages-with-english-user-facing-text-home-inventory-shop-cart-checkout-and-a-simple-contact-page-for-the-footer-contact-link-add-a-clean-sticky-top-navigation-with-blak-wordmark-on-the-left-and-links-on-the-right-home-shop-cart",
+      "featureTitle": "Create the required routes and pages with English user-facing text: Home, Inventory (Shop), Cart, Checkout, and a simple Contact page (for the footer Contact link). Add a clean sticky top navigation with 'BLAK' wordmark on the left and links on the right (Home, Shop, Cart).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/blak/SiteLayout.tsx",
+        "frontend/src/pages/CartPage.tsx",
+        "frontend/src/pages/CheckoutPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ShopPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-home-page-to-match-the-described-structure-1-full-screen-hero-with-parallax-background-image-and-normal-speed-foreground-text-cta-2-2-3-alternating-parallax-editorial-sections-with-black-and-white-fashion-backgrounds-and-foreground-text-blocks-3-featured-collection-grid-3-4-products-with-hover-effects-showing-name-price-and-a-view-all-button-linking-to-the-inventory-page-4-about-brand-statement-section-on-white-background-with-black-text-5-black-footer-with-white-text",
+      "featureTitle": "Build the Home page to match the described structure: (1) full-screen hero with parallax background image and normal-speed foreground text/CTA; (2) 2–3 alternating parallax editorial sections with black-and-white fashion backgrounds and foreground text blocks; (3) Featured Collection grid (3–4 products) with hover effects showing name + price and a 'View All' button linking to the Inventory page; (4) About/Brand Statement section on white background with black text; (5) black footer with white text.",
+      "files": [
+        "frontend/src/components/blak/FadeInOnView.tsx",
+        "frontend/src/components/blak/ParallaxSection.tsx",
+        "frontend/src/components/blak/ProductCard.tsx",
+        "frontend/src/hooks/useProducts.ts",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-inventory-shop-page-with-a-responsive-product-grid-3-4-columns-desktop-fewer-on-smaller-screens-minimalist-monochrome-product-cards-and-the-requested-controls-filter-by-category-hoodies-tees-jackets-accessories-and-size-sort-by-price-low-to-high-and-newest-product-cards-must-include-image-name-price-and-an-add-to-cart-button-that-appears-on-hover-desktop-and-is-always-accessible-on-mobile",
+      "featureTitle": "Implement the Inventory (Shop) page with a responsive product grid (3–4 columns desktop, fewer on smaller screens), minimalist monochrome product cards, and the requested controls: filter by Category (Hoodies, Tees, Jackets, Accessories) and Size; sort by Price (Low to High) and Newest. Product cards must include image, name, price, and an 'Add to Cart' button that appears on hover (desktop) and is always accessible on mobile.",
+      "files": [
+        "frontend/src/components/blak/ProductCard.tsx",
+        "frontend/src/components/blak/ShopControls.tsx",
+        "frontend/src/pages/ShopPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-functional-shopping-cart-system-on-the-frontend-add-to-cart-from-shop-and-featured-collection-cart-item-list-shows-product-thumbnail-name-selected-size-quantity-selector-item-price-and-remove-option-cart-summary-shows-subtotal-shipping-total-and-a-proceed-to-checkout-cta-black-button-with-white-text",
+      "featureTitle": "Create a functional shopping cart system on the frontend: add-to-cart from Shop and Featured Collection; cart item list shows product thumbnail, name, selected size, quantity selector (+/-), item price, and remove option; cart summary shows subtotal, shipping, total, and a 'Proceed to Checkout' CTA (black button with white text).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/CartPage.tsx",
+        "frontend/src/state/CartProvider.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-persistent-cart-storage-so-cart-contents-remain-after-page-reload-and-across-navigation-without-requiring-sign-in",
+      "featureTitle": "Implement persistent cart storage so cart contents remain after page reload (and across navigation) without requiring sign-in.",
+      "files": [
+        "frontend/src/state/CartProvider.tsx",
+        "frontend/src/state/cartStorage.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-checkout-page-as-a-minimal-distraction-free-flow-shipping-information-form-billing-information-form-payment-method-selection-credit-card-apple-pay-paypal-and-an-order-summary-panel-right-side-on-desktop-implement-validation-for-required-fields-and-a-prominent-complete-order-cta",
+      "featureTitle": "Build the Checkout page as a minimal, distraction-free flow: Shipping Information form, Billing Information form, Payment Method selection (Credit Card, Apple Pay, PayPal), and an Order Summary panel (right side on desktop). Implement validation for required fields and a prominent 'Complete Order' CTA.",
+      "files": [
+        "frontend/src/components/blak/CheckoutForm.tsx",
+        "frontend/src/components/blak/OrderSummary.tsx",
+        "frontend/src/pages/CheckoutPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-an-end-to-end-order-placement-flow-on-complete-order-create-an-order-record-in-the-backend-containing-cart-line-items-totals-selected-shipping-method-and-checkout-form-details-excluding-any-sensitive-payment-card-data-on-success-show-an-order-confirmation-state-and-clear-the-persisted-cart",
+      "featureTitle": "Implement an end-to-end order placement flow: on 'Complete Order', create an order record in the backend containing cart line items, totals, selected shipping method, and checkout form details (excluding any sensitive payment card data). On success, show an order confirmation state and clear the persisted cart.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useCompleteOrder.ts",
+        "frontend/src/pages/CheckoutPage.tsx",
+        "frontend/src/pages/OrderConfirmationPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-backend-product-management-capabilities-in-the-single-motoko-actor-crud-for-products-add-new-products-edit-prices-update-details-inventory-stock-management-category-and-available-sizes-per-product-and-product-image-upload-storage-and-retrieval-provide-an-admin-ui-page-to-manage-products-and-inventory-from-the-browser",
+      "featureTitle": "Create backend product management capabilities in the single Motoko actor: CRUD for products (add new products, edit prices, update details), inventory/stock management, category and available sizes per product, and product image upload/storage and retrieval. Provide an admin UI page to manage products and inventory from the browser.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/blak/AdminGuard.tsx",
+        "frontend/src/components/blak/ImageUploadField.tsx",
+        "frontend/src/components/blak/ProductCard.tsx",
+        "frontend/src/pages/AdminProductsPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ShopPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-performance-and-seo-basics-optimized-image-delivery-on-the-frontend-appropriately-sized-responsive-images-where-applicable-page-level-metadata-title-description-for-home-shop-cart-checkout-contact-and-ensure-smooth-scrolling-animations-do-not-cause-jank-on-mobile-parallax-must-remain-restricted-to-the-home-page",
+      "featureTitle": "Add performance and SEO basics: optimized image delivery on the frontend (appropriately sized responsive images where applicable), page-level metadata (title/description) for Home/Shop/Cart/Checkout/Contact, and ensure smooth scrolling animations do not cause jank on mobile. Parallax must remain restricted to the Home page.",
+      "files": [
+        "frontend/src/components/blak/ProductCard.tsx",
+        "frontend/src/hooks/usePageMeta.ts",
+        "frontend/src/pages/CartPage.tsx",
+        "frontend/src/pages/CheckoutPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ShopPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-subtle-fade-in-transitions-on-scroll-for-editorial-sections-and-implement-minimal-hover-animations-across-key-interactive-elements-nav-links-product-cards-buttons-while-preserving-accessibility-visible-focus-states-and-keyboard-navigability",
+      "featureTitle": "Add subtle fade-in transitions on scroll for editorial sections and implement minimal hover animations across key interactive elements (nav links, product cards, buttons) while preserving accessibility (visible focus states and keyboard navigability).",
+      "files": [
+        "frontend/index.css",
+        "frontend/src/components/blak/FadeInOnView.tsx",
+        "frontend/src/components/blak/ProductCard.tsx",
+        "frontend/src/components/blak/SiteLayout.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-generated-black-and-white-fashion-photography-assets-as-static-files-under-frontend-public-assets-generated-and-use-them-throughout-the-site-home-hero-parallax-sections-product-imagery-placeholders-until-admin-uploads-are-used",
+      "featureTitle": "Add generated black-and-white fashion photography assets as static files under frontend/public/assets/generated and use them throughout the site (Home hero + parallax sections + product imagery placeholders until admin uploads are used).",
+      "files": [
+        "frontend/src/components/blak/ProductCard.tsx",
+        "frontend/src/components/blak/SiteLayout.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

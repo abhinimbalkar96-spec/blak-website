@@ -1,0 +1,273 @@
+{
+  "kind": "build_request",
+  "title": "BLAK Premium Monochrome E-commerce Site (Home Parallax, Shop, Cart, Checkout, Product Admin)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement a site-wide BLAK visual system and apply it consistently across all pages: minimalist luxury streetwear aesthetic; black/white/light-gray palette (Primary #000000, Secondary #FFFFFF, Accent #F2F2F2); modern sans-serif typography with bold headings and clean body text; high-contrast layout with editorial spacing; minimal but elegant hover and button micro-interactions.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Theme: Black and White (minimalist, bold, luxury streetwear aesthetic)",
+          "Mood: Clean, high-contrast, high-end, edgy, fashion-forward",
+          "Typography: Modern sans-serif fonts (bold headings, clean body text)",
+          "Color Palette: Primary: Deep Black (#000000) Secondary: White (#FFFFFF) Accent: Light Gray (#F2F2F2)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages use the specified palette and typography consistently (no additional dominant colors).",
+        "Buttons/links have subtle hover/micro-interactions (e.g., opacity/translate/underline) that match the premium minimal style.",
+        "Layout uses clear editorial spacing (generous whitespace, strong alignment) and remains readable at all breakpoints."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create the required routes and pages with English user-facing text: Home, Inventory (Shop), Cart, Checkout, and a simple Contact page (for the footer Contact link). Add a clean sticky top navigation with 'BLAK' wordmark on the left and links on the right (Home, Shop, Cart).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Pages Required 1. Home Page",
+          "2. Inventory (Shop) Page",
+          "3. Cart Page",
+          "4. Checkout Page",
+          "Footer ... Links: Home Shop Cart Contact",
+          "Clean navigation bar: Logo (BLAK) on left Links (Home, Shop, Cart) on right Sticky navigation on scroll"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigation is sticky on scroll and provides working links to Home/Shop/Cart.",
+        "Footer includes working links to Home/Shop/Cart/Contact and displays social icons in white on black background.",
+        "Contact page renders a minimal, monochrome contact section (no external email/SMS integrations)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build the Home page to match the described structure: (1) full-screen hero with parallax background image and normal-speed foreground text/CTA; (2) 2–3 alternating parallax editorial sections with black-and-white fashion backgrounds and foreground text blocks; (3) Featured Collection grid (3–4 products) with hover effects showing name + price and a 'View All' button linking to the Inventory page; (4) About/Brand Statement section on white background with black text; (5) black footer with white text.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Home Page Hero Section (With Parallax Scrolling)",
+          "Create 2–3 sections with alternating: Background black-and-white fashion images Foreground text blocks",
+          "Featured Collection Section Grid layout (3–4 products)",
+          "About / Brand Statement Section ... Clean white background with black text.",
+          "Footer Black background White text"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero displays heading “BLAK — Wear the Statement.”, a minimal subheading, and a “Shop Now” CTA (white button on black background).",
+        "Parallax effect is present on the Home page only; background scrolls slower than foreground content.",
+        "Parallax sections include subtle fade-in animations and smooth scrolling feel.",
+        "Featured Collection shows 3–4 products with hover image zoom/fade and visible name + price, and 'View All' navigates to Shop."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement the Inventory (Shop) page with a responsive product grid (3–4 columns desktop, fewer on smaller screens), minimalist monochrome product cards, and the requested controls: filter by Category (Hoodies, Tees, Jackets, Accessories) and Size; sort by Price (Low to High) and Newest. Product cards must include image, name, price, and an 'Add to Cart' button that appears on hover (desktop) and is always accessible on mobile.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Inventory (Shop) Page ... Clean grid layout (3–4 columns depending on screen size)",
+          "Filter by: Category (Hoodies, Tees, Jackets, Accessories) Size",
+          "Sort by: Price (Low to High) Newest",
+          "Hover effect: Slight zoom on product image Button appears on hover"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Filters update the visible product list based on selected Category and Size.",
+        "Sorting changes product order by selected criterion (Price Low→High, Newest).",
+        "Hover interactions are subtle and premium (image zoom/fade; button reveal) while remaining usable on touch devices."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create a functional shopping cart system on the frontend: add-to-cart from Shop and Featured Collection; cart item list shows product thumbnail, name, selected size, quantity selector (+/-), item price, and remove option; cart summary shows subtotal, shipping, total, and a 'Proceed to Checkout' CTA (black button with white text).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Functional shopping cart system",
+          "Cart Page ... Product image thumbnail Product name Size Quantity selector (+ / -) Price Remove option",
+          "Summary Section Subtotal Shipping Total “Proceed to Checkout” button (black button with white text)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add products to cart, update quantities, and remove items; totals update immediately.",
+        "Cart UI matches monochrome style and the specified list + summary layout.",
+        "Proceed to Checkout navigates to the Checkout page only when cart has at least one item."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement persistent cart storage so cart contents remain after page reload (and across navigation) without requiring sign-in.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Persistent cart (items remain if page reloads)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Reloading the browser preserves cart items, quantities, and selected sizes.",
+        "A clear action exists to remove items; clearing the cart reflects in persisted state."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Build the Checkout page as a minimal, distraction-free flow: Shipping Information form, Billing Information form, Payment Method selection (Credit Card, Apple Pay, PayPal), and an Order Summary panel (right side on desktop). Implement validation for required fields and a prominent 'Complete Order' CTA.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Checkout Page ... Sections: Shipping Information Billing Information Payment Method (Credit Card, Apple Pay, PayPal) Order Summary (on right side for desktop)",
+          "Strong CTA button: “Complete Order”"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout renders two-column layout on desktop with Order Summary on the right; collapses appropriately on mobile.",
+        "Payment method options include Credit Card, Apple Pay, PayPal (UI selection only; no third-party payment integrations).",
+        "Submitting with missing required fields shows inline validation errors and does not complete the order."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement an end-to-end order placement flow: on 'Complete Order', create an order record in the backend containing cart line items, totals, selected shipping method, and checkout form details (excluding any sensitive payment card data). On success, show an order confirmation state and clear the persisted cart.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Secure checkout flow",
+          "end-to-end cart/checkout flow"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores an order with line items, totals, and customer shipping/billing info provided in the form (no card numbers stored).",
+        "Frontend shows a confirmation view/state after successful order creation.",
+        "Cart is cleared (including persisted storage) only after backend order creation succeeds."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Create backend product management capabilities in the single Motoko actor: CRUD for products (add new products, edit prices, update details), inventory/stock management, category and available sizes per product, and product image upload/storage and retrieval. Provide an admin UI page to manage products and inventory from the browser.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Easy backend product management so I can: Add new products Edit prices Upload product images Manage inventory"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Admin UI can create, edit, and deactivate/delete products; update price and stock; set category and size availability.",
+        "Product images can be uploaded from the admin UI and later displayed on Home featured products and Shop product cards.",
+        "Shop and Home display products from backend data (not hardcoded)."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add performance and SEO basics: optimized image delivery on the frontend (appropriately sized responsive images where applicable), page-level metadata (title/description) for Home/Shop/Cart/Checkout/Contact, and ensure smooth scrolling animations do not cause jank on mobile. Parallax must remain restricted to the Home page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Fast loading and optimized images",
+          "SEO optimized",
+          "Smooth scrolling animations",
+          "Parallax scrolling effect only on Home page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each page sets a meaningful document title and meta description appropriate to the route.",
+        "Parallax is implemented only on Home; other pages have no parallax behavior.",
+        "Scrolling and animations remain smooth on mobile-sized viewports (no continuous forced reflow patterns)."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Add subtle fade-in transitions on scroll for editorial sections and implement minimal hover animations across key interactive elements (nav links, product cards, buttons) while preserving accessibility (visible focus states and keyboard navigability).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Subtle fade-in transitions while scrolling",
+          "Minimal but elegant hover animations",
+          "Add micro-interactions for buttons"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Sections on Home fade-in as they enter viewport; animations are subtle and consistent with the BLAK theme.",
+        "All interactive elements have keyboard focus styling and can be used via keyboard navigation.",
+        "Hover-only interactions do not block essential actions on touch devices."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Add generated black-and-white fashion photography assets as static files under frontend/public/assets/generated and use them throughout the site (Home hero + parallax sections + product imagery placeholders until admin uploads are used).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Use high-quality black and white fashion photography throughout the site. Images should feature models wearing monochrome outfits, urban settings, strong shadows, and dramatic lighting."
+        ]
+      },
+      "acceptanceCriteria": [
+        "All specified generated images exist under frontend/public/assets/generated and are referenced directly by the frontend (not proxied through the backend).",
+        "Home hero and parallax sections use the generated photography assets as backgrounds.",
+        "Shop shows product cards with monochrome imagery by default, and switches to uploaded product images when provided via admin."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (all logic in backend/main.mo).",
+    "Do not modify any files under frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose instead of editing).",
+    "No third-party authentication providers; only Internet Identity is supported (not required unless explicitly added later).",
+    "No external databases or third-party payment processors; payment method options are UI-only unless supported natively by the platform."
+  ],
+  "nonGoals": [
+    "Implementing real payment processing for Credit Card/Apple Pay/PayPal.",
+    "Real-time order tracking, shipping carrier integrations, or inventory syncing with external systems.",
+    "Customer accounts, wishlists, reviews, or recommendations (unless requested later).",
+    "Email/SMS notifications and marketing integrations."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Black-and-white fashion hero photo with model in urban setting, dramatic shadows (blak-hero.dim_2400x1400.jpg)",
+      "Black-and-white fashion editorial background photo, high contrast, streetwear mood (blak-parallax-1.dim_2400x1400.jpg)",
+      "Black-and-white fashion editorial background photo, alternate composition, strong lighting (blak-parallax-2.dim_2400x1400.jpg)",
+      "Black-and-white fashion editorial background photo, minimal negative space for text overlay (blak-parallax-3.dim_2400x1400.jpg)",
+      "Black-and-white product photo of hoodie on model, monochrome streetwear (product-hoodie.dim_1200x1200.jpg)",
+      "Black-and-white product photo of tee on model, monochrome streetwear (product-tee.dim_1200x1200.jpg)",
+      "Black-and-white product photo of jacket on model, monochrome streetwear (product-jacket.dim_1200x1200.jpg)",
+      "Black-and-white product photo of accessory (cap/bag) in urban monochrome style (product-accessory.dim_1200x1200.jpg)",
+      "Minimal monochrome BLAK wordmark logo on transparent background (blak-wordmark.dim_800x240.png)"
+    ],
+    "edits": []
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a modern, premium monochrome (black/white) e-commerce website for the clothing brand BLAK with Home (parallax), Shop/Inventory with filters/sort, Cart, and Checkout, including persistent cart, secure checkout, SEO, responsive design, smooth animations, and simple backend product management.",
+  "architectural_notes": [
+    "Brand identity: BLAK; monochrome luxury streetwear aesthetic; palette #000000 / #FFFFFF with accent #F2F2F2; modern sans-serif typography.",
+    "Use high-quality black-and-white fashion photography (urban settings, strong shadows, dramatic lighting) across the site.",
+    "Parallax scrolling effect is for Home page only; other pages use smooth scrolling + subtle fade-in animations.",
+    "Cart must persist across page reloads.",
+    "Checkout flow should be secure and include payment options (Credit Card, Apple Pay, PayPal).",
+    "Backend/admin needed for product CRUD, image upload, pricing updates, and inventory management.",
+    "Navigation is sticky on scroll; minimal elegant hover animations and micro-interactions."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Black-and-white fashion hero photo with model in urban setting, dramatic shadows (blak-hero.dim_2400x1400.jpg)\n- Black-and-white fashion editorial background photo, high contrast, streetwear mood (blak-parallax-1.dim_2400x1400.jpg)\n- Black-and-white fashion editorial background photo, alternate composition, strong lighting (blak-parallax-2.dim_2400x1400.jpg)\n- Black-and-white fashion editorial background photo, minimal negative space for text overlay (blak-parallax-3.dim_2400x1400.jpg)\n- Black-and-white product photo of hoodie on model, monochrome streetwear (product-hoodie.dim_1200x1200.jpg)\n- Black-and-white product photo of tee on model, monochrome streetwear (product-tee.dim_1200x1200.jpg)\n- Black-and-white product photo of jacket on model, monochrome streetwear (product-jacket.dim_1200x1200.jpg)\n- Black-and-white product photo of accessory (cap/bag) in urban monochrome style (product-accessory.dim_1200x1200.jpg)\n- Minimal monochrome BLAK wordmark logo on transparent background (blak-wordmark.dim_800x240.png)",
+  "existing_features": [
+    {
+      "id": "feature-implement-a-site-wide-blak-visual-system-and-apply-it-consistently-across-all-pages-minimalist-luxury-streetwear-aesthetic-black-white-light-gray-palette-primary-000000-secondary-ffffff-accent-f2f2f2-modern-sans-serif-typography-with-bold-headings-and-clean-body-text-high-contrast-layout-with-editorial-spacing-minimal-but-elegant-hover-and-button-micro-interactions",
+      "title": "Implement a site-wide BLAK visual system and apply it consistently across all pages: minimalist luxury streetwear aesthetic; black/white/light-gray palette (Primary #000000, Secondary #FFFFFF, Accent #F2F2F2); modern sans-serif typography with bold headings and clean body text; high-contrast layout with editorial spacing; minimal but elegant hover and button micro-interactions.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-the-required-routes-and-pages-with-english-user-facing-text-home-inventory-shop-cart-checkout-and-a-simple-contact-page-for-the-footer-contact-link-add-a-clean-sticky-top-navigation-with-blak-wordmark-on-the-left-and-links-on-the-right-home-shop-cart",
+      "title": "Create the required routes and pages with English user-facing text: Home, Inventory (Shop), Cart, Checkout, and a simple Contact page (for the footer Contact link). Add a clean sticky top navigation with 'BLAK' wordmark on the left and links on the right (Home, Shop, Cart).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-home-page-to-match-the-described-structure-1-full-screen-hero-with-parallax-background-image-and-normal-speed-foreground-text-cta-2-2-3-alternating-parallax-editorial-sections-with-black-and-white-fashion-backgrounds-and-foreground-text-blocks-3-featured-collection-grid-3-4-products-with-hover-effects-showing-name-price-and-a-view-all-button-linking-to-the-inventory-page-4-about-brand-statement-section-on-white-background-with-black-text-5-black-footer-with-white-text",
+      "title": "Build the Home page to match the described structure: (1) full-screen hero with parallax background image and normal-speed foreground text/CTA; (2) 2–3 alternating parallax editorial sections with black-and-white fashion backgrounds and foreground text blocks; (3) Featured Collection grid (3–4 products) with hover effects showing name + price and a 'View All' button linking to the Inventory page; (4) About/Brand Statement section on white background with black text; (5) black footer with white text.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-inventory-shop-page-with-a-responsive-product-grid-3-4-columns-desktop-fewer-on-smaller-screens-minimalist-monochrome-product-cards-and-the-requested-controls-filter-by-category-hoodies-tees-jackets-accessories-and-size-sort-by-price-low-to-high-and-newest-product-cards-must-include-image-name-price-and-an-add-to-cart-button-that-appears-on-hover-desktop-and-is-always-accessible-on-mobile",
+      "title": "Implement the Inventory (Shop) page with a responsive product grid (3–4 columns desktop, fewer on smaller screens), minimalist monochrome product cards, and the requested controls: filter by Category (Hoodies, Tees, Jackets, Accessories) and Size; sort by Price (Low to High) and Newest. Product cards must include image, name, price, and an 'Add to Cart' button that appears on hover (desktop) and is always accessible on mobile.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-functional-shopping-cart-system-on-the-frontend-add-to-cart-from-shop-and-featured-collection-cart-item-list-shows-product-thumbnail-name-selected-size-quantity-selector-item-price-and-remove-option-cart-summary-shows-subtotal-shipping-total-and-a-proceed-to-checkout-cta-black-button-with-white-text",
+      "title": "Create a functional shopping cart system on the frontend: add-to-cart from Shop and Featured Collection; cart item list shows product thumbnail, name, selected size, quantity selector (+/-), item price, and remove option; cart summary shows subtotal, shipping, total, and a 'Proceed to Checkout' CTA (black button with white text).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-persistent-cart-storage-so-cart-contents-remain-after-page-reload-and-across-navigation-without-requiring-sign-in",
+      "title": "Implement persistent cart storage so cart contents remain after page reload (and across navigation) without requiring sign-in.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-checkout-page-as-a-minimal-distraction-free-flow-shipping-information-form-billing-information-form-payment-method-selection-credit-card-apple-pay-paypal-and-an-order-summary-panel-right-side-on-desktop-implement-validation-for-required-fields-and-a-prominent-complete-order-cta",
+      "title": "Build the Checkout page as a minimal, distraction-free flow: Shipping Information form, Billing Information form, Payment Method selection (Credit Card, Apple Pay, PayPal), and an Order Summary panel (right side on desktop). Implement validation for required fields and a prominent 'Complete Order' CTA.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-end-to-end-order-placement-flow-on-complete-order-create-an-order-record-in-the-backend-containing-cart-line-items-totals-selected-shipping-method-and-checkout-form-details-excluding-any-sensitive-payment-card-data-on-success-show-an-order-confirmation-state-and-clear-the-persisted-cart",
+      "title": "Implement an end-to-end order placement flow: on 'Complete Order', create an order record in the backend containing cart line items, totals, selected shipping method, and checkout form details (excluding any sensitive payment card data). On success, show an order confirmation state and clear the persisted cart.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-backend-product-management-capabilities-in-the-single-motoko-actor-crud-for-products-add-new-products-edit-prices-update-details-inventory-stock-management-category-and-available-sizes-per-product-and-product-image-upload-storage-and-retrieval-provide-an-admin-ui-page-to-manage-products-and-inventory-from-the-browser",
+      "title": "Create backend product management capabilities in the single Motoko actor: CRUD for products (add new products, edit prices, update details), inventory/stock management, category and available sizes per product, and product image upload/storage and retrieval. Provide an admin UI page to manage products and inventory from the browser.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-performance-and-seo-basics-optimized-image-delivery-on-the-frontend-appropriately-sized-responsive-images-where-applicable-page-level-metadata-title-description-for-home-shop-cart-checkout-contact-and-ensure-smooth-scrolling-animations-do-not-cause-jank-on-mobile-parallax-must-remain-restricted-to-the-home-page",
+      "title": "Add performance and SEO basics: optimized image delivery on the frontend (appropriately sized responsive images where applicable), page-level metadata (title/description) for Home/Shop/Cart/Checkout/Contact, and ensure smooth scrolling animations do not cause jank on mobile. Parallax must remain restricted to the Home page.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-subtle-fade-in-transitions-on-scroll-for-editorial-sections-and-implement-minimal-hover-animations-across-key-interactive-elements-nav-links-product-cards-buttons-while-preserving-accessibility-visible-focus-states-and-keyboard-navigability",
+      "title": "Add subtle fade-in transitions on scroll for editorial sections and implement minimal hover animations across key interactive elements (nav links, product cards, buttons) while preserving accessibility (visible focus states and keyboard navigability).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-generated-black-and-white-fashion-photography-assets-as-static-files-under-frontend-public-assets-generated-and-use-them-throughout-the-site-home-hero-parallax-sections-product-imagery-placeholders-until-admin-uploads-are-used",
+      "title": "Add generated black-and-white fashion photography assets as static files under frontend/public/assets/generated and use them throughout the site (Home hero + parallax sections + product imagery placeholders until admin uploads are used).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create BLAK Home page with full-screen parallax hero, 2–3 layered parallax sections, featured collection grid, brand statement section, and editorial monochrome styling",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement clean sticky navigation (logo left; Home/Shop/Cart right) plus footer with links (Home/Shop/Cart/Contact) and social icons",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Create Inventory/Shop page with responsive product grid, minimalist product cards, hover interactions, and filtering (category, size) + sorting (price low-high, newest)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Build functional shopping cart page with item list, size display, quantity +/- controls, remove option, and totals with proceed-to-checkout CTA",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Build checkout page with shipping/billing forms, payment methods (Credit Card, Apple Pay, PayPal), order summary layout, and 'Complete Order' CTA",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement persistent shopping cart (items remain after reload) and end-to-end cart/checkout flow",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Provide easy backend product management (add products, edit prices, upload images, manage inventory)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add site-wide responsiveness, smooth scrolling, subtle fade-in transitions, hover animations, and button micro-interactions (parallax restricted to Home)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Optimize for fast loading and SEO (metadata, performance, image optimization)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "BLAK",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

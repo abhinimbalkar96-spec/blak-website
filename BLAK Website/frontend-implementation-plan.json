@@ -1,0 +1,454 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "BLAK Premium Monochrome E-commerce Frontend",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement a site-wide BLAK monochrome visual system (palette, typography, spacing, micro-interactions) and apply consistently.",
+      "acceptanceCriteria": [
+        "All pages use the specified palette and typography consistently (no additional dominant colors).",
+        "Buttons/links have subtle hover/micro-interactions (e.g., opacity/translate/underline) that match the premium minimal style.",
+        "Layout uses clear editorial spacing (generous whitespace, strong alignment) and remains readable at all breakpoints."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend theme tokens to align with BLAK palette (#000000 / #FFFFFF / #F2F2F2), premium spacing, and animation utilities used for subtle micro-interactions."
+        },
+        {
+          "path": "frontend/index.css",
+          "operation": "modify",
+          "description": "Adjust CSS variables and base styles to enforce monochrome look (background/foreground/primary/secondary/accent), modern sans-serif typography defaults, and consistent editorial spacing + focus-visible styles."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create the stylesheet imported by frontend/src/main.tsx; re-export or import from frontend/index.css so the global BLAK design system loads correctly without changing immutable files."
+        },
+        {
+          "path": "frontend/src/components/blak/Primitives.tsx",
+          "operation": "create",
+          "description": "Create reusable styled primitives (e.g., Section, Container, Kicker, Heading, ButtonLink) to standardize monochrome styling and micro-interactions across pages without editing frontend/src/components/ui. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create required routes/pages (Home, Shop, Cart, Checkout, Contact) with sticky top navigation and footer links/social icons.",
+      "acceptanceCriteria": [
+        "Navigation is sticky on scroll and provides working links to Home/Shop/Cart.",
+        "Footer includes working links to Home/Shop/Cart/Contact and displays social icons in white on black background.",
+        "Contact page renders a minimal, monochrome contact section (no external email/SMS integrations)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the main app shell with client-side routing for Home/Shop/Cart/Checkout/Contact, including sticky top nav (BLAK wordmark + links) and a shared footer with required links and social icons."
+        },
+        {
+          "path": "frontend/src/components/blak/SiteLayout.tsx",
+          "operation": "create",
+          "description": "Implement a layout component that renders the sticky navigation, page container spacing, and black footer styling with white text/icons, used by all routes."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create Home page route component wired into App routing."
+        },
+        {
+          "path": "frontend/src/pages/ShopPage.tsx",
+          "operation": "create",
+          "description": "Create Inventory (Shop) page route component wired into App routing."
+        },
+        {
+          "path": "frontend/src/pages/CartPage.tsx",
+          "operation": "create",
+          "description": "Create Cart page route component wired into App routing."
+        },
+        {
+          "path": "frontend/src/pages/CheckoutPage.tsx",
+          "operation": "create",
+          "description": "Create Checkout page route component wired into App routing."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "create",
+          "description": "Create minimal Contact page route component wired into App routing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build Home page with hero parallax background, editorial parallax sections with fade-in, featured collection grid, about section, and black footer.",
+      "acceptanceCriteria": [
+        "Hero displays heading “BLAK — Wear the Statement.”, a minimal subheading, and a “Shop Now” CTA (white button on black background).",
+        "Parallax effect is present on the Home page only; background scrolls slower than foreground content.",
+        "Parallax sections include subtle fade-in animations and smooth scrolling feel.",
+        "Featured Collection shows 3–4 products with hover image zoom/fade and visible name + price, and 'View All' navigates to Shop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Implement the Home page structure: full-screen hero with parallax background (frontend/public/assets/generated/blak-hero.dim_2400x1400.jpg), 2–3 editorial parallax sections using generated backgrounds, Featured Collection grid (3–4 products) + View All link, About/Brand section, and ensure content/CTA text matches requirement."
+        },
+        {
+          "path": "frontend/src/components/blak/ParallaxSection.tsx",
+          "operation": "create",
+          "description": "Create a parallax background section component used only on Home, with scroll-based background transform (requestAnimationFrame) and support for overlay text blocks; designed to avoid mobile jank."
+        },
+        {
+          "path": "frontend/src/components/blak/FadeInOnView.tsx",
+          "operation": "create",
+          "description": "Create an IntersectionObserver-based wrapper for subtle fade-in transitions when sections enter the viewport (used for Home editorial blocks)."
+        },
+        {
+          "path": "frontend/src/components/blak/ProductCard.tsx",
+          "operation": "create",
+          "description": "Create a monochrome product card with premium hover image zoom/fade, name + price overlay, and support for Add to Cart UI (desktop hover reveal; always accessible on mobile)."
+        },
+        {
+          "path": "frontend/src/hooks/useProducts.ts",
+          "operation": "create",
+          "description": "Add a React Query hook to fetch products from the backend actor (getAllProducts) for Home featured collection and Shop grid; handle loading/empty states."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement Shop page product grid with Category/Size filters, Price/Newest sorting, and hover-reveal Add to Cart (mobile accessible).",
+      "acceptanceCriteria": [
+        "Filters update the visible product list based on selected Category and Size.",
+        "Sorting changes product order by selected criterion (Price Low→High, Newest).",
+        "Hover interactions are subtle and premium (image zoom/fade; button reveal) while remaining usable on touch devices."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ShopPage.tsx",
+          "operation": "modify",
+          "description": "Implement responsive 3–4 column product grid with monochrome product cards; add Category filter (Hoodies/Tees/Jackets/Accessories), Size filter, and sorting (Price Low→High, Newest) using backend product list; wire Add to Cart to cart state."
+        },
+        {
+          "path": "frontend/src/components/blak/ShopControls.tsx",
+          "operation": "create",
+          "description": "Create minimalist filter/sort controls UI (Category, Size, Sort) styled to BLAK system; integrates with Shop page state."
+        },
+        {
+          "path": "frontend/src/components/blak/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Ensure Add to Cart button is hover-revealed on desktop but always reachable on mobile/touch layouts, while keeping subtle premium hover effects."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create a functional cart UI: add-to-cart from Shop/Home, editable quantities, remove items, and totals with Proceed to Checkout CTA.",
+      "acceptanceCriteria": [
+        "Users can add products to cart, update quantities, and remove items; totals update immediately.",
+        "Cart UI matches monochrome style and the specified list + summary layout.",
+        "Proceed to Checkout navigates to the Checkout page only when cart has at least one item."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/state/cart.ts",
+          "operation": "create",
+          "description": "Implement cart state utilities (add item with size, increment/decrement quantity, remove item, compute subtotal/shipping/total) designed to be used by Home/Shop/Cart/Checkout."
+        },
+        {
+          "path": "frontend/src/state/CartProvider.tsx",
+          "operation": "create",
+          "description": "Create a CartProvider (React context) exposing cart items and actions; used by App to enable add-to-cart across pages."
+        },
+        {
+          "path": "frontend/src/pages/CartPage.tsx",
+          "operation": "modify",
+          "description": "Implement cart list UI with thumbnail, name, selected size, quantity (+/-), item price, remove option; add summary panel with subtotal/shipping/total and Proceed to Checkout CTA (disabled/guarded when cart empty)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap routed pages with CartProvider and ensure Home/Shop product cards can add items into the cart context."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Persist cart contents in browser storage across reloads and navigation without sign-in.",
+      "acceptanceCriteria": [
+        "Reloading the browser preserves cart items, quantities, and selected sizes.",
+        "A clear action exists to remove items; clearing the cart reflects in persisted state."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/state/cartStorage.ts",
+          "operation": "create",
+          "description": "Implement localStorage persistence for cart state (load on init, save on changes), including selected sizes and quantities."
+        },
+        {
+          "path": "frontend/src/state/CartProvider.tsx",
+          "operation": "modify",
+          "description": "Integrate cartStorage persistence so cart state is restored on mount and written on updates; expose a clearCart action used after successful checkout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Build minimal checkout UI with forms (Shipping/Billing), payment method selection (UI only), validation, and right-side order summary on desktop.",
+      "acceptanceCriteria": [
+        "Checkout renders two-column layout on desktop with Order Summary on the right; collapses appropriately on mobile.",
+        "Payment method options include Credit Card, Apple Pay, PayPal (UI selection only; no third-party payment integrations).",
+        "Submitting with missing required fields shows inline validation errors and does not complete the order."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CheckoutPage.tsx",
+          "operation": "modify",
+          "description": "Implement distraction-free checkout: Shipping Information form, Billing Information form, Payment Method selection (Credit Card/Apple Pay/PayPal UI-only), and Order Summary panel (right side on desktop); add required-field validation with inline errors and a prominent Complete Order CTA."
+        },
+        {
+          "path": "frontend/src/components/blak/CheckoutForm.tsx",
+          "operation": "create",
+          "description": "Create a reusable checkout form component with minimalist inputs, validation messaging, and accessible focus styles; used by Checkout page."
+        },
+        {
+          "path": "frontend/src/components/blak/OrderSummary.tsx",
+          "operation": "create",
+          "description": "Create an order summary component that reads current cart state and displays line items + totals; used on Checkout page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Implement frontend order placement: call backend to create order, show confirmation state, and clear persisted cart only on success.",
+      "acceptanceCriteria": [
+        "Backend stores an order with line items, totals, and customer shipping/billing info provided in the form (no card numbers stored).",
+        "Frontend shows a confirmation view/state after successful order creation.",
+        "Cart is cleared (including persisted storage) only after backend order creation succeeds."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useCompleteOrder.ts",
+          "operation": "create",
+          "description": "Add a React Query mutation hook that calls the backend actor completeOrder with cart line items, totals, and checkout form details; handle success/error UI states."
+        },
+        {
+          "path": "frontend/src/pages/CheckoutPage.tsx",
+          "operation": "modify",
+          "description": "Wire Complete Order CTA to useCompleteOrder; on success show an in-page confirmation state (or navigate to a confirmation route) and clear cart (including persisted storage) only after success; never collect/store sensitive card data."
+        },
+        {
+          "path": "frontend/src/pages/OrderConfirmationPage.tsx",
+          "operation": "create",
+          "description": "Create an order confirmation page/state that displays a minimal confirmation message and the returned order id; linked from successful checkout."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register/wire an Order Confirmation route so successful checkout can navigate to it."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Create an admin UI page to manage products/inventory and upload product images, using backend product management and access control.",
+      "acceptanceCriteria": [
+        "Admin UI can create, edit, and deactivate/delete products; update price and stock; set category and size availability.",
+        "Product images can be uploaded from the admin UI and later displayed on Home featured products and Shop product cards.",
+        "Shop and Home display products from backend data (not hardcoded)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminProductsPage.tsx",
+          "operation": "create",
+          "description": "Create an admin-only Products & Inventory management page: list products, create/edit/delete actions, stock adjustments, category + sizes editing, and image upload using ExternalBlob. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/blak/AdminGuard.tsx",
+          "operation": "create",
+          "description": "Implement an admin guard that checks backend role (isCallerAdmin / getCallerUserRole) and blocks non-admins with an Access Denied view; use Internet Identity login only for admin access flow per authorization component guidance. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/blak/ImageUploadField.tsx",
+          "operation": "create",
+          "description": "Implement an image upload field that converts selected file bytes to ExternalBlob (with optional upload progress) and submits with product create/update, leveraging direct URL display for previews. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useAdminProducts.ts",
+          "operation": "create",
+          "description": "Create hooks for admin product management (fetch all products; add/update/delete; adjust stock) using the backend actor methods; handle optimistic refresh/invalidation."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the admin products route (e.g., /admin/products) into the router and wrap it with AdminGuard; keep public pages (Home/Shop/Cart/Checkout/Contact) accessible without requiring login."
+        },
+        {
+          "path": "frontend/src/components/blak/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Update product image rendering to prefer backend-provided product.image via ExternalBlob.getDirectURL() when available; fall back to generated placeholder product images otherwise. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Ensure featured products are sourced from backend data via useProducts (not hardcoded), and display uploaded product images when present (fallback to generated placeholders otherwise)."
+        },
+        {
+          "path": "frontend/src/pages/ShopPage.tsx",
+          "operation": "modify",
+          "description": "Ensure shop grid is sourced from backend data via useProducts (not hardcoded), and display uploaded product images when present (fallback to generated placeholders otherwise)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add performance + SEO basics: page metadata per route, responsive/optimized images, smooth animations (no jank), and restrict parallax to Home.",
+      "acceptanceCriteria": [
+        "Each page sets a meaningful document title and meta description appropriate to the route.",
+        "Parallax is implemented only on Home; other pages have no parallax behavior.",
+        "Scrolling and animations remain smooth on mobile-sized viewports (no continuous forced reflow patterns)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/usePageMeta.ts",
+          "operation": "create",
+          "description": "Create a small hook that sets document title and meta description on mount/update for each page without adding new dependencies."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Set route-specific title/description via usePageMeta; implement parallax using requestAnimationFrame and transform-only updates to avoid reflow; ensure parallax behavior exists only within this page."
+        },
+        {
+          "path": "frontend/src/pages/ShopPage.tsx",
+          "operation": "modify",
+          "description": "Set route-specific title/description via usePageMeta; ensure no parallax behavior is present; use performant image rendering (lazy loading where appropriate)."
+        },
+        {
+          "path": "frontend/src/pages/CartPage.tsx",
+          "operation": "modify",
+          "description": "Set route-specific title/description via usePageMeta."
+        },
+        {
+          "path": "frontend/src/pages/CheckoutPage.tsx",
+          "operation": "modify",
+          "description": "Set route-specific title/description via usePageMeta; keep animations minimal and avoid layout thrashing on mobile."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Set route-specific title/description via usePageMeta."
+        },
+        {
+          "path": "frontend/src/components/blak/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Ensure product images are rendered with appropriate sizing hints and lazy loading where applicable, and keep hover effects transform/opacity-only for performance."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add subtle scroll fade-ins for editorial sections and minimal hover animations across UI, with accessibility (focus states, keyboard navigation, touch usability).",
+      "acceptanceCriteria": [
+        "Sections on Home fade-in as they enter viewport; animations are subtle and consistent with the BLAK theme.",
+        "All interactive elements have keyboard focus styling and can be used via keyboard navigation.",
+        "Hover-only interactions do not block essential actions on touch devices."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/blak/FadeInOnView.tsx",
+          "operation": "modify",
+          "description": "Ensure fade-in transitions are subtle and consistent; respect reduced-motion preference and avoid heavy continuous animations."
+        },
+        {
+          "path": "frontend/src/components/blak/SiteLayout.tsx",
+          "operation": "modify",
+          "description": "Apply consistent accessible focus-visible styling to nav links and footer links, and implement minimal hover transitions that don't hide essential actions."
+        },
+        {
+          "path": "frontend/src/components/blak/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Refine hover/focus interactions (image zoom/fade; button reveal) to remain accessible via keyboard (focus) and usable on touch devices (no hover dependency)."
+        },
+        {
+          "path": "frontend/index.css",
+          "operation": "modify",
+          "description": "Add global focus-visible and reduced-motion styles consistent with the monochrome BLAK design system."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Add generated black-and-white fashion assets under frontend/public/assets/generated and use them across Home parallax and as product placeholders until admin images exist.",
+      "acceptanceCriteria": [
+        "All specified generated images exist under frontend/public/assets/generated and are referenced directly by the frontend (not proxied through the backend).",
+        "Home hero and parallax sections use the generated photography assets as backgrounds.",
+        "Shop shows product cards with monochrome imagery by default, and switches to uploaded product images when provided via admin."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/blak-hero.dim_2400x1400.jpg",
+          "operation": "create",
+          "description": "Add generated asset: Black-and-white fashion hero photo with model in urban setting, dramatic shadows."
+        },
+        {
+          "path": "frontend/public/assets/generated/blak-parallax-1.dim_2400x1400.jpg",
+          "operation": "create",
+          "description": "Add generated asset: Black-and-white fashion editorial background photo, high contrast, streetwear mood."
+        },
+        {
+          "path": "frontend/public/assets/generated/blak-parallax-2.dim_2400x1400.jpg",
+          "operation": "create",
+          "description": "Add generated asset: Black-and-white fashion editorial background photo, alternate composition, strong lighting."
+        },
+        {
+          "path": "frontend/public/assets/generated/blak-parallax-3.dim_2400x1400.jpg",
+          "operation": "create",
+          "description": "Add generated asset: Black-and-white fashion editorial background photo, minimal negative space for text overlay."
+        },
+        {
+          "path": "frontend/public/assets/generated/product-hoodie.dim_1200x1200.jpg",
+          "operation": "create",
+          "description": "Add generated asset: Black-and-white product photo of hoodie on model, monochrome streetwear."
+        },
+        {
+          "path": "frontend/public/assets/generated/product-tee.dim_1200x1200.jpg",
+          "operation": "create",
+          "description": "Add generated asset: Black-and-white product photo of tee on model, monochrome streetwear."
+        },
+        {
+          "path": "frontend/public/assets/generated/product-jacket.dim_1200x1200.jpg",
+          "operation": "create",
+          "description": "Add generated asset: Black-and-white product photo of jacket on model, monochrome streetwear."
+        },
+        {
+          "path": "frontend/public/assets/generated/product-accessory.dim_1200x1200.jpg",
+          "operation": "create",
+          "description": "Add generated asset: Black-and-white product photo of accessory (cap/bag) in urban monochrome style."
+        },
+        {
+          "path": "frontend/public/assets/generated/blak-wordmark.dim_800x240.png",
+          "operation": "create",
+          "description": "Add generated asset: Minimal monochrome BLAK wordmark logo on transparent background."
+        },
+        {
+          "path": "frontend/src/components/blak/SiteLayout.tsx",
+          "operation": "modify",
+          "description": "Use frontend/public/assets/generated/blak-wordmark.dim_800x240.png in the sticky navigation as the BLAK wordmark (left side) while keeping right-side links."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Reference generated photography assets directly for hero and parallax sections: frontend/public/assets/generated/blak-hero.dim_2400x1400.jpg, frontend/public/assets/generated/blak-parallax-1.dim_2400x1400.jpg, frontend/public/assets/generated/blak-parallax-2.dim_2400x1400.jpg, frontend/public/assets/generated/blak-parallax-3.dim_2400x1400.jpg."
+        },
+        {
+          "path": "frontend/src/components/blak/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Default product imagery placeholders to generated assets (hoodie/tee/jacket/accessory) when backend product.image is absent; switch to backend-provided ExternalBlob.getDirectURL() when present. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}
